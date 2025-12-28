@@ -26,14 +26,14 @@ puts:
 main:
 	cli
 	xor ax, ax
-	mov ds, ax
-	mov es, ax
-
 	mov ss, ax
 	mov sp, 0x7C00
 
+	mov ax, 0x07C0
+	mov ds, ax
+	mov es, ax
 
-	mov si, msg_hello
+	mov si, msg_hello - $$
 	call puts
 
 	hlt
