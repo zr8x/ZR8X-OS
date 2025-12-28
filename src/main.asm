@@ -1,7 +1,7 @@
 org 0x7C00
 bits 16
 
-%define ENDL 0x0E, 0x0A
+%define ENDL 0x0D, 0x0A
 
 puts:
 	push si
@@ -24,7 +24,8 @@ puts:
 	ret
 
 main:
-	mov ax, 0
+	cli
+	xor ax, ax
 	mov ds, ax
 	mov es, ax
 
