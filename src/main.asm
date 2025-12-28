@@ -1,6 +1,8 @@
 org 0x7C00
 bits 16
 
+jmp main
+
 %define ENDL 0x0D, 0x0A
 
 puts:
