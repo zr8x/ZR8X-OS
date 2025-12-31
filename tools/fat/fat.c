@@ -3,10 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
-typedef uint8_t bool;
-#define true 1
-#define false 0
+#include <stdbool.h>
 
 typedef struct 
 {
@@ -32,8 +29,6 @@ typedef struct
     uint32_t VolumeId;          // serial number, value doesn't matter
     uint8_t VolumeLabel[11];    // 11 bytes, padded with spaces
     uint8_t SystemId[8];
-
-    // ... we don't care about code ...
 
 } __attribute__((packed)) BootSector;
 
