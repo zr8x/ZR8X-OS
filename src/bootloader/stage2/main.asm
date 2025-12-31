@@ -1,39 +1,22 @@
-org 0x0
 bits 16
 
-%define ENDL 0x0D, 0x0A
+section _ENTRY class=CODE
 
-start:
-	jmp main
+extern _cstart_
+global _ENTRY
 
-main:
-	; print zr8xos message
-	mov si, msg_hello
-	call puts
+entry:
+	cli
+	mov ax, ds
+	mov ss, ax
+	mov sp, 0
+	mov bp, sp
+	sti
 
+	; expect boot drive in dl, send it as argument to cstart function
+	xor dh, dh
+	push dx
+	call _cstart_
 
-.halt:
 	cli
 	hlt
-
-puts:
-	push si
-	push ax
-
-
-.loop:
-	lodsb
-	or al, al
-	jz .done
-
-	mov ah, 0x0e
-	int 0x10
-
-	jmp .loop
-
-.done:
-	pop ax
-	pop si
-	ret
-
-msg_hello: db "Welcome to ZR8X OS!", ENDL, 0
